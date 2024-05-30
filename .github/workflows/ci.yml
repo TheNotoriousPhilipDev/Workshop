@@ -20,7 +20,7 @@ jobs:
         distribution: 'temurin'
         java-version: '21'
 
-    - name: Change to project directory
+    - name: springboot-crud
       run: cd springboot-crud/
 
     - name: Cache Maven packages

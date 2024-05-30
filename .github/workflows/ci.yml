@@ -20,6 +20,9 @@ jobs:
         distribution: 'temurin'
         java-version: '21'
 
+    - name: Change to project directory
+      run: cd /home/felipe/Documents/Mercamez/Workshop/springboot-crud/
+
     - name: Cache Maven packages
       uses: actions/cache@v2
       with:

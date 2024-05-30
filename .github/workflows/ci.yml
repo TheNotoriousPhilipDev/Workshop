@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: Java CI
 
 on:
   push:
@@ -8,39 +8,20 @@ on:
 
 jobs:
   build:
+
     runs-on: ubuntu-22.04
 
     steps:
-    - name: Checkout code
+    - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up JDK
+    - name: Set up JDK 21
       uses: actions/setup-java@v3
       with:
-        distribution: 'temurin'
         java-version: '21'
 
-    # Aquí asegúrate de que el nombre del directorio esté escrito correctamente
-    - name: Navigate to springboot-crud directory
-      run: cd springboot-crud/
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
 
-    # Asegúrate de que la ruta al archivo pom.xml sea correcta
-    - name: Cache Maven packages
-      uses: actions/cache@v2
-      with:
-        path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('springboot-crud/pom.xml') }}
-        restore-keys: |
-          ${{ runner.os }}-maven-
-
-    # Asegúrate de que los comandos Maven se estén ejecutando en el directorio correcto
-    - name: Install dependencies
-      run: mvn install -DskipTests
-
-    # Asegúrate de que los comandos Maven se estén ejecutando en el directorio correcto
-    - name: Run unit tests
+    - name: Run tests
       run: mvn test
-
-    # Asegúrate de que los comandos Maven se estén ejecutando en el directorio correcto
-    - name: Run integration tests
-      run: mvn verify -Pintegration

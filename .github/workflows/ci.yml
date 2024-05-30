@@ -19,10 +19,16 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '21'
-        distribution: 'adopt'
+        distribution: 'adopt'  
+
+    - name: Change directory to springboot-crud
+      run: cd springboot-crud
 
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn -B package --file springboot-crud/pom.xml
 
     - name: Run tests
-      run: mvn test
+      run: mvn test --file springboot-crud/pom.xml
+
+    - name: Run integration tests
+      run: mvn verify -P integration --file springboot-crud/pom.xml

@@ -20,9 +20,11 @@ jobs:
         distribution: 'temurin'
         java-version: '21'
 
+    # Aquí asegúrate de que el nombre del directorio esté escrito correctamente
     - name: Navigate to springboot-crud directory
       run: cd springboot-crud/
 
+    # Asegúrate de que la ruta al archivo pom.xml sea correcta
     - name: Cache Maven packages
       uses: actions/cache@v2
       with:
@@ -31,11 +33,14 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-
 
+    # Asegúrate de que los comandos Maven se estén ejecutando en el directorio correcto
     - name: Install dependencies
       run: mvn install -DskipTests
 
+    # Asegúrate de que los comandos Maven se estén ejecutando en el directorio correcto
     - name: Run unit tests
       run: mvn test
 
+    # Asegúrate de que los comandos Maven se estén ejecutando en el directorio correcto
     - name: Run integration tests
       run: mvn verify -Pintegration

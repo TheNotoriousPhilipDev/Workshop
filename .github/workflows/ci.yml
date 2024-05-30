@@ -21,13 +21,13 @@ jobs:
         java-version: '21'
 
     - name: Change to project directory
-      run: cd /home/felipe/Documents/Mercamez/Workshop/springboot-crud/
+      run: cd springboot-crud/
 
     - name: Cache Maven packages
       uses: actions/cache@v2
       with:
         path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        key: ${{ runner.os }}-maven-${{ hashFiles('springboot-crud/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
 

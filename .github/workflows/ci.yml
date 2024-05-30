@@ -14,13 +14,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up JDK 21
+    - name: Set up JDK
       uses: actions/setup-java@v3
       with:
         distribution: 'temurin'
         java-version: '21'
 
-    - name: springboot-crud
+    - name: Navigate to springboot-crud directory
       run: cd springboot-crud/
 
     - name: Cache Maven packages
